@@ -78,7 +78,7 @@ func (r *Request) SetDebug(v bool) {
 // Get transport
 func (r *Request) getTransport() http.RoundTripper {
 	if r.transport == nil {
-		return http.DefaultTransport
+		r.transport = http.DefaultTransport.(*http.Transport)
 	}
 
 	r.transport.DisableKeepAlives = r.disableKeepAlives
